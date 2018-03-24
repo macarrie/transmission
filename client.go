@@ -303,7 +303,7 @@ func (c *Client) PortTest() (bool, error) {
 
 // FreeSpace tests how much free space is available in a client-specified
 // folder.
-func (c *Client) FreeSpace(path string) (int, error) {
+func (c *Client) FreeSpace(path string) (int64, error) {
 	type arg struct {
 		Path string `json:"path"`
 	}
@@ -313,7 +313,7 @@ func (c *Client) FreeSpace(path string) (int, error) {
 	}
 	type rep struct {
 		Path      string `json:"path"`
-		SizeBytes int    `json:"size-bytes"`
+		SizeBytes int64  `json:"size-bytes"`
 	}
 	r := &Response{Arguments: &rep{}}
 	err := c.request(tReq, r)
