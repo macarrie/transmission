@@ -135,8 +135,8 @@ type Torrent struct {
 	DesiredAvailable        int
 	DoneDate                int
 	DownloadDir             string
-	DownloadedEver          int
-	DownloadLimit           int
+	DownloadedEver          int64
+	DownloadLimit           int64
 	DownloadLimited         bool
 	Error                   int
 	ErrorString             string
@@ -152,7 +152,7 @@ type Torrent struct {
 	IsFinished              bool
 	IsPrivate               bool
 	IsStalled               bool
-	LeftUntilDone           int
+	LeftUntilDone           int64
 	MagnetLink              string
 	ManualAnnounceTime      int
 	MaxConnectedPeers       int
@@ -167,7 +167,7 @@ type Torrent struct {
 	PercentDone             float64
 	Pieces                  string
 	PieceCount              int
-	PieceSize               int
+	PieceSize               int64
 	Priorities              []int
 	QueuePosition           int
 	RateDownload            int
@@ -179,15 +179,15 @@ type Torrent struct {
 	SeedIdleMode            int
 	SeedRatioLimit          float64
 	SeedRatioMode           int
-	SizeWhenDone            int
+	SizeWhenDone            int64
 	StartDate               int
 	Status                  int
 	Trackers                *[]Trackers
 	TrackerStats            *[]TrackerStats
 	TotalSize               int
 	TorrentFile             string
-	UploadedEver            int
-	UploadLimit             int
+	UploadedEver            int64
+	UploadLimit             int64
 	UploadLimited           bool
 	UploadRatio             float64
 	Wanted                  []int
@@ -197,14 +197,14 @@ type Torrent struct {
 
 // File transmission API response
 type File struct {
-	BytesCompleted int
-	Length         int
+	BytesCompleted int64
+	Length         int64
 	Name           string
 }
 
 // FileStats transmission API response
 type FileStats struct {
-	BytesCompleted int
+	BytesCompleted int64
 	Wanted         bool
 	Priority       int
 }
