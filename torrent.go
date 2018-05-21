@@ -2,7 +2,7 @@ package transmission
 
 const (
 	// StatusStopped stopped
-	StatusStopped = 0
+	StatusStopped = 064
 	// StatusCheckPending check pending
 	StatusCheckPending = 1
 	// StatusChecking checking
@@ -98,28 +98,28 @@ type TorrentMap map[string]*Torrent
 
 // SetTorrentArg arguments for Torrent.Set method
 type SetTorrentArg struct {
-	BandwidthPriority   int      `json:"bandwidthPriority,omitempty"`
-	DownloadLimit       int      `json:"downloadLimit,omitempty"`
+	BandwidthPriority   int64    `json:"bandwidthPriority,omitempty"`
+	DownloadLimit       int64    `json:"downloadLimit,omitempty"`
 	DownloadLimited     bool     `json:"downloadLimited,omitempty"`
-	FilesWanted         []int    `json:"files-wanted,omitempty"`
-	FilesUnwanted       []int    `json:"files-unwanted,omitempty"`
+	FilesWanted         []int64  `json:"files-wanted,omitempty"`
+	FilesUnwanted       []int64  `json:"files-unwanted,omitempty"`
 	HonorsSessionLimits bool     `json:"honorsSessionLimits,omitempty"`
 	Ids                 int      `json:"ids"`
 	Location            string   `json:"location,omitempty"`
-	PeerLimit           int      `json:"peer-limit,omitempty"`
-	PriorityHigh        []int    `json:"priority-high,omitempty"`
-	PriorityLow         []int    `json:"priority-low,omitempty"`
-	PriorityNormal      []int    `json:"priority-normal,omitempty"`
-	QueuePosition       int      `json:"queuePosition,omitempty"`
-	SeedIdleLimit       int      `json:"seedIdleLimit,omitempty"`
-	SeedIdleMode        int      `json:"seedIdleMode,omitempty"`
+	PeerLimit           int64    `json:"peer-limit,omitempty"`
+	PriorityHigh        []int64  `json:"priority-high,omitempty"`
+	PriorityLow         []int64  `json:"priority-low,omitempty"`
+	PriorityNormal      []int64  `json:"priority-normal,omitempty"`
+	QueuePosition       int64    `json:"queuePosition,omitempty"`
+	SeedIdleLimit       int64    `json:"seedIdleLimit,omitempty"`
+	SeedIdleMode        int64    `json:"seedIdleMode,omitempty"`
 	SeedRatioLimit      float64  `json:"seedRatioLimit,omitempty"`
 	SeedRatioMode       int      `json:"seedRatioMode,omitempty"`
 	TrackerAdd          []string `json:"trackerAdd,omitempty"`
 	TrackerRemove       []int    `json:"trackerRemove,omitempty"`
 	// TrackerReplace       `json:"trackerReplace,omitempty"`
-	UploadLimit   int  `json:"uploadLimit,omitempty"`
-	UploadLimited bool `json:"uploadLimited,omitempty"`
+	UploadLimit   int64 `json:"uploadLimit,omitempty"`
+	UploadLimited bool  `json:"uploadLimited,omitempty"`
 }
 
 // Torrent represent a torrent present in transmission
@@ -129,10 +129,10 @@ type Torrent struct {
 	AddedDate               int
 	BandwidthPriority       int
 	Comment                 string
-	CorruptEver             int
+	CorruptEver             int64
 	Creator                 string
 	DateCreated             int
-	DesiredAvailable        int
+	DesiredAvailable        int64
 	DoneDate                int
 	DownloadDir             string
 	DownloadedEver          int64
@@ -140,13 +140,13 @@ type Torrent struct {
 	DownloadLimited         bool
 	Error                   int
 	ErrorString             string
-	Eta                     int
-	EtaIdle                 int
+	Eta                     int64
+	EtaIdle                 int64
 	Files                   *[]File
 	FileStats               *[]FileStats
 	HashString              string
-	HaveUnchecked           int
-	HaveValid               int
+	HaveUnchecked           int64
+	HaveValid               int64
 	HonorsSessionLimits     bool
 	ID                      int
 	IsFinished              bool
@@ -158,24 +158,24 @@ type Torrent struct {
 	MaxConnectedPeers       int
 	MetadataPercentComplete float64
 	Name                    string
-	Peerlimit               int
+	Peerlimit               int64
 	Peers                   *[]Peers
 	PeersConnected          int
 	PeersFrom               PeersFrom
-	PeersGettingFromUs      int
-	PeersSendingToUs        int
+	PeersGettingFromUs      int64
+	PeersSendingToUs        int64
 	PercentDone             float64
 	Pieces                  string
-	PieceCount              int
+	PieceCount              int64
 	PieceSize               int64
 	Priorities              []int
 	QueuePosition           int
-	RateDownload            int
-	RateUpload              int
+	RateDownload            int64
+	RateUpload              int64
 	RecheckProgress         float64
 	SecondsDownloading      int
 	SecondsSeeding          int
-	SeedIdleLimit           int
+	SeedIdleLimit           int64
 	SeedIdleMode            int
 	SeedRatioLimit          float64
 	SeedRatioMode           int
@@ -184,15 +184,15 @@ type Torrent struct {
 	Status                  int
 	Trackers                *[]Trackers
 	TrackerStats            *[]TrackerStats
-	TotalSize               int
+	TotalSize               int64
 	TorrentFile             string
 	UploadedEver            int64
 	UploadLimit             int64
 	UploadLimited           bool
 	UploadRatio             float64
-	Wanted                  []int
+	Wanted                  []int64
 	Webseeds                []string
-	WebseedsSendingToUs     int
+	WebseedsSendingToUs     int64
 }
 
 // File transmission API response
@@ -225,8 +225,8 @@ type Peers struct {
 	PeerIsInterested   bool
 	Port               int
 	Progress           float64
-	RateToClient       int
-	RateToPeer         int
+	RateToClient       int64
+	RateToPeer         int64
 }
 
 // PeersFrom transmission API response
