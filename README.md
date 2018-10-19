@@ -1,6 +1,8 @@
 Transmission JSON RPC API library
 =================================
 
+[![GuardRails badge](https://badges.production.guardrails.io/macarrie/transmission.svg)](https://www.guardrails.io)
+
 Implement all available methode, for details see the [documentation](https://trac.transmissionbt.com/browser/trunk/extras/rpc-spec.txt?rev=14463).
 
 
